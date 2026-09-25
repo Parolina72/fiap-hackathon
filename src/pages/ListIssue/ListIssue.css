@@ -19,6 +19,8 @@
 .issue-item p { margin: 9px 0 15px; color: #64748b; line-height: 1.45; }
 .status { flex-shrink: 0; border-radius: 999px; padding: 5px 10px; background: #dbeafe; color: #1d4ed8; font-size: 12px; font-weight: 800; }
 .status-em-andamento { background: #fef3c7; color: #b45309; }
+.status-em-análise, .status-em-atendimento { background: #fef3c7; color: #92400e; }
+.status-cancelada { background: #fee2e2; color: #b91c1c; }
 .status-resolvida { background: #dcfce7; color: #15803d; }
 .issue-meta { display: flex; flex-wrap: wrap; gap: 8px 18px; color: #475569; font-size: 13px; }
 .issue-meta span + span { position: relative; }

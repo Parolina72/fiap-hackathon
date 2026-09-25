@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import '../../styles/layout.css'
 import './ListIssue.css'
+import { CurrentUser } from '../../auth'
 
 const categories = [
 	'Limpeza',
@@ -12,7 +13,7 @@ const categories = [
 	'Outro',
 ]
 
-const statuses = ['Aberta', 'Em andamento', 'Resolvida']
+const statuses = ['Aberta', 'Em análise', 'Em atendimento', 'Cancelada', 'Resolvida']
 
 type Occurrence = {
 	id: string
@@ -22,6 +23,7 @@ type Occurrence = {
 	address: string
 	images?: string[]
 	status?: string
+	authorEmail?: string
 	createdAt: string
 }
 
@@ -38,7 +40,7 @@ function formatDate(date: string) {
 	return new Intl.DateTimeFormat('pt-BR', { dateStyle: 'medium' }).format(new Date(date))
 }
 
-export default function ListIssue() {
+export default function ListIssue({ currentUser }: { currentUser: CurrentUser }) {
 	const navigate = useNavigate()
 	const [occurrences, setOccurrences] = useState<Occurrence[]>([])
 	const [titleFilter, setTitleFilter] = useState('')
@@ -49,7 +51,10 @@ export default function ListIssue() {
 		setOccurrences(getOccurrences())
 	}, [])
 
-	const filteredOccurrences = occurrences.filter(occurrence => {
+	const visibleOccurrences = currentUser.role === 'manager'
+		? occurrences
+		: occurrences.filter(occurrence => occurrence.authorEmail === currentUser.email)
+	const filteredOccurrences = visibleOccurrences.filter(occurrence => {
 		const matchesTitle = occurrence.title.toLowerCase().includes(titleFilter.toLowerCase().trim())
 		const matchesCategory = !categoryFilter || occurrence.category === categoryFilter
 		const matchesStatus = !statusFilter || (occurrence.status ?? 'Aberta') === statusFilter
@@ -62,8 +67,8 @@ export default function ListIssue() {
 			<section className="list-issue-content" aria-labelledby="list-issue-title">
 				<header className="list-issue-heading">
 					<div>
-						<h1 id="list-issue-title">Dashboard do Usuário</h1>
-						<p>Acompanhe todas as ocorrências registradas por você.</p>
+						<h1 id="list-issue-title">{currentUser.role === 'manager' ? 'Lista de Ocorrências' : 'Dashboard do Usuário'}</h1>
+						<p>{currentUser.role === 'manager' ? 'Acompanhe e atualize as ocorrências.' : 'Acompanhe todas as ocorrências registradas por você.'}</p>
 					</div>
 					<button className="list-create-button" type="button" onClick={() => navigate('/create-issue')}>+ Nova ocorrência</button>
 				</header>
@@ -113,9 +118,9 @@ export default function ListIssue() {
 					</section>
 				) : (
 					<section className="empty-issues">
-						<h2>{occurrences.length === 0 ? 'Você ainda não criou ocorrências' : 'Nenhuma ocorrência encontrada'}</h2>
-						<p>{occurrences.length === 0 ? 'Registre um problema ou sugestão para acompanhar sua resolução.' : 'Tente ajustar os filtros para encontrar o que procura.'}</p>
-						{occurrences.length === 0 && <button className="submit-button" type="button" onClick={() => navigate('/create-issue')}>Criar primeira ocorrência</button>}
+						<h2>{visibleOccurrences.length === 0 ? (currentUser.role === 'manager' ? 'Ainda não há ocorrências' : 'Você ainda não criou ocorrências') : 'Nenhuma ocorrência encontrada'}</h2>
+						<p>{visibleOccurrences.length === 0 ? (currentUser.role === 'manager' ? 'As ocorrências registradas aparecerão aqui.' : 'Registre um problema ou sugestão para acompanhar sua resolução.') : 'Tente ajustar os filtros para encontrar o que procura.'}</p>
+						{visibleOccurrences.length === 0 && currentUser.role === 'common' && <button className="submit-button" type="button" onClick={() => navigate('/create-issue')}>Criar primeira ocorrência</button>}
 					</section>
 				)}
 			</section>
