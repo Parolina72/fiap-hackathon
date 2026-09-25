@@ -1,0 +1,37 @@
+.list-issue-page { min-height: calc(100vh - 65px); padding: 48px 24px 64px; background: #f5f7fa; }
+.list-issue-content { width: min(100%, 1040px); margin: 0 auto; }
+.list-issue-heading { display: flex; align-items: flex-end; justify-content: space-between; gap: 24px; margin-bottom: 30px; }
+.list-issue-kicker { margin: 0 0 8px; color: #2563eb; font-size: 12px; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; }
+.list-issue-heading h1 { margin: 0; color: #111827; font-size: clamp(30px, 5vw, 44px); line-height: 1.1; }
+.list-issue-heading p:last-child { margin: 10px 0 0; color: #64748b; }
+.list-create-button, .submit-button { border: 0; border-radius: 9px; padding: 13px 18px; background: #2563eb; color: #fff; font-weight: 700; white-space: nowrap; }
+.list-create-button:hover, .submit-button:hover { opacity: .86; }
+.issue-filters { display: grid; grid-template-columns: minmax(220px, 2fr) 1fr 1fr; gap: 16px; padding: 22px; background: #fff; border: 1px solid #e5e7eb; border-radius: 14px; box-shadow: 0 8px 22px rgba(15, 23, 42, .05); }
+.issue-filters label { display: flex; flex-direction: column; gap: 8px; color: #374151; font-size: 13px; font-weight: 700; }
+.issue-filters input, .issue-filters select { width: 100%; border: 1px solid #cbd5e1; border-radius: 8px; padding: 11px 12px; background: #fff; color: #111827; font: inherit; font-weight: 400; outline: none; }
+.issue-filters input:focus, .issue-filters select:focus { border-color: #2563eb; box-shadow: 0 0 0 3px rgba(37, 99, 235, .14); }
+.results-count { margin: 28px 0 12px; color: #64748b; font-size: 14px; font-weight: 700; }
+.issue-list { display: flex; flex-direction: column; gap: 12px; }
+.issue-item { display: flex; justify-content: space-between; gap: 20px; padding: 22px 24px; background: #fff; border: 1px solid #e5e7eb; border-radius: 12px; }
+.issue-item-main { min-width: 0; }
+.issue-item-topline { display: flex; align-items: flex-start; gap: 14px; }
+.issue-item h2 { margin: 0; color: #111827; font-size: 19px; }
+.issue-item p { margin: 9px 0 15px; color: #64748b; line-height: 1.45; }
+.status { flex-shrink: 0; border-radius: 999px; padding: 5px 10px; background: #dbeafe; color: #1d4ed8; font-size: 12px; font-weight: 800; }
+.status-em-andamento { background: #fef3c7; color: #b45309; }
+.status-resolvida { background: #dcfce7; color: #15803d; }
+.issue-meta { display: flex; flex-wrap: wrap; gap: 8px 18px; color: #475569; font-size: 13px; }
+.issue-meta span + span { position: relative; }
+.issue-meta span + span::before { content: '•'; position: absolute; left: -12px; color: #94a3b8; }
+.image-count { flex-shrink: 0; align-self: flex-start; color: #64748b; font-size: 12px; font-weight: 700; }
+.empty-issues { padding: 58px 24px; text-align: center; background: #fff; border: 1px dashed #cbd5e1; border-radius: 12px; }
+.empty-issues h2 { margin: 0; color: #1f2937; font-size: 22px; }
+.empty-issues p { margin: 10px 0 24px; color: #64748b; }
+@media (max-width: 700px) {
+	.list-issue-page { padding: 30px 14px 48px; }
+	.list-issue-heading { align-items: stretch; flex-direction: column; }
+	.list-create-button { align-self: flex-start; }
+	.issue-filters { grid-template-columns: 1fr; }
+	.issue-item { flex-direction: column; padding: 18px; }
+	.image-count { align-self: flex-start; }
+}

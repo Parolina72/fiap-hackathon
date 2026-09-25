@@ -1,0 +1,29 @@
+.create-issue-page { min-height: calc(100vh - 65px); padding: 48px 24px 64px; background: #f5f7fa; }
+.create-issue-card { width: min(100%, 860px); margin: 0 auto; overflow: hidden; background: #fff; border: 1px solid #e5e7eb; border-radius: 18px; box-shadow: 0 12px 30px rgba(15, 23, 42, .08); }
+.create-issue-header { padding: 32px 40px 28px; background: #0f172a; color: #fff; }
+.eyebrow { margin: 0 0 10px; color: #93c5fd; font-size: 12px; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; }
+.create-issue-header h1 { margin: 0; font-size: clamp(28px, 4vw, 40px); line-height: 1.1; }
+.create-issue-header p:last-child { margin: 12px 0 0; color: #cbd5e1; }
+.create-issue-form { display: flex; flex-direction: column; gap: 22px; padding: 32px 40px 40px; }
+.create-issue-form label { display: flex; flex-direction: column; gap: 8px; color: #1f2937; font-size: 14px; font-weight: 700; }
+.create-issue-form label b { color: #dc2626; }
+.create-issue-form label small { color: #6b7280; font-weight: 500; }
+.create-issue-form input, .create-issue-form textarea, .create-issue-form select { width: 100%; border: 1px solid #cbd5e1; border-radius: 9px; padding: 12px 14px; background: #fff; color: #111827; font: inherit; font-weight: 400; outline: none; transition: border-color .2s, box-shadow .2s; }
+.create-issue-form textarea { resize: vertical; min-height: 140px; }
+.create-issue-form input:focus, .create-issue-form textarea:focus, .create-issue-form select:focus { border-color: #2563eb; box-shadow: 0 0 0 3px rgba(37, 99, 235, .14); }
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+.file-input { padding: 10px !important; background: #f8fafc !important; }
+.field-hint { margin-top: -2px; }
+.success-message { margin: -2px 0 0; color: #15803d; font-size: 14px; font-weight: 700; }
+.form-actions { display: flex; justify-content: flex-end; gap: 12px; padding-top: 8px; }
+.submit-button, .secondary-button { border: 0; border-radius: 9px; padding: 13px 20px; font-weight: 700; }
+.submit-button { background: #2563eb; color: #fff; }
+.secondary-button { background: #e5e7eb; color: #111827; }
+.submit-button:hover, .secondary-button:hover { opacity: .86; }
+@media (max-width: 640px) {
+  .create-issue-page { padding: 24px 14px 40px; }
+  .create-issue-header, .create-issue-form { padding-left: 22px; padding-right: 22px; }
+  .form-row { grid-template-columns: 1fr; gap: 22px; }
+  .form-actions { flex-direction: column-reverse; }
+  .submit-button, .secondary-button { width: 100%; }
+}
