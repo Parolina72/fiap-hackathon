@@ -6,8 +6,8 @@
 .login-content { padding: 20px; display: flex; flex-direction: column; }
 .login-content label { display: flex; flex-direction: column; margin-bottom: 16px; }
 .login-content label span { margin-bottom: 8px; color: #374151; font-size: 14px; font-weight: 600; }
-.login-content input { border: 1px solid #d1d5db; border-radius: 10px; padding: 10px 12px; background: #f9fafb; font-size: 16px; outline: none; }
-.login-content input:focus { border-color: #2563eb; }
+.login-content input, .login-content select { border: 1px solid #d1d5db; border-radius: 10px; padding: 10px 12px; background: #f9fafb; font-size: 16px; outline: none; }
+.login-content input:focus, .login-content select:focus { border-color: #2563eb; }
 .login-submit, .login-back { margin-top: 12px; border: 0; border-radius: 10px; padding: 14px; color: #fff; font-size: 16px; font-weight: 700; }
 .login-submit { background: #2563eb; }
 .login-back { background: #030303; }

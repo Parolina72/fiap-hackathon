@@ -5,6 +5,9 @@
 .open-issue-kicker { margin: 0 0 8px; color: #2563eb; font-size: 12px; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; }
 .open-issue-header h1 { margin: 0; color: #111827; font-size: clamp(28px, 5vw, 42px); line-height: 1.1; }
 .open-status { border-radius: 999px; padding: 7px 12px; background: #dbeafe; color: #1d4ed8; font-size: 13px; font-weight: 800; }
+.open-status.status-em-análise, .open-status.status-em-atendimento { background: #fef3c7; color: #92400e; }
+.open-status.status-cancelada { background: #fee2e2; color: #b91c1c; }
+.open-status.status-resolvida { background: #dcfce7; color: #15803d; }
 .open-issue-grid { display: grid; grid-template-columns: minmax(0, 1.6fr) minmax(260px, 1fr); gap: 20px; align-items: start; }
 .open-issue-main { display: flex; flex-direction: column; gap: 20px; }
 .read-only-panel, .comments-panel, .history-panel, .open-issue-empty { padding: 26px; background: #fff; border: 1px solid #e5e7eb; border-radius: 12px; box-shadow: 0 8px 22px rgba(15, 23, 42, .05); }
@@ -13,6 +16,15 @@
 .read-only-field + .read-only-field { padding-top: 20px; border-top: 1px solid #eef2f7; }
 .read-only-field span { color: #64748b; font-size: 12px; font-weight: 800; text-transform: uppercase; }
 .read-only-field p { margin: 8px 0 0; color: #1f2937; line-height: 1.5; white-space: pre-wrap; }
+.issue-edit-panel, .rating-panel { display: flex; flex-direction: column; gap: 14px; padding: 26px; background: #fff; border: 1px solid #e5e7eb; border-radius: 12px; box-shadow: 0 8px 22px rgba(15, 23, 42, .05); }
+.issue-edit-panel h2, .rating-panel h2 { margin: 0; color: #111827; font-size: 20px; }
+.issue-edit-panel label, .rating-panel label { display: flex; flex-direction: column; gap: 7px; color: #374151; font-size: 13px; font-weight: 700; }
+.issue-edit-panel input, .issue-edit-panel select, .issue-edit-panel textarea, .rating-panel select { width: 100%; border: 1px solid #cbd5e1; border-radius: 8px; padding: 11px 12px; background: #fff; color: #1f2937; font: inherit; font-weight: 400; }
+.issue-edit-panel textarea { resize: vertical; }
+.issue-edit-panel .open-primary-button, .rating-panel .open-primary-button { align-self: flex-end; }
+.rating-panel p { margin: 0; color: #475569; }
+.save-message { margin: 0; color: #15803d; font-size: 14px; font-weight: 700; }
+.history-solution { margin: 9px 0 0; color: #475569; font-size: 13px; line-height: 1.45; white-space: pre-wrap; }
 .comments-panel h2, .history-panel h2 { margin: 0 0 18px; color: #111827; font-size: 20px; }
 .comment-form { display: flex; flex-direction: column; gap: 10px; }
 .comment-form textarea { width: 100%; resize: vertical; border: 1px solid #cbd5e1; border-radius: 8px; padding: 12px; font: inherit; outline: none; }

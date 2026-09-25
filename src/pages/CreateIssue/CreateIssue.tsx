@@ -2,6 +2,7 @@ import { ChangeEvent, FormEvent, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import '../../styles/layout.css'
 import './CreateIssue.css'
+import { CurrentUser } from '../../auth'
 
 const categories = [
 	'Limpeza',
@@ -20,6 +21,9 @@ type Occurrence = {
 	address: string
 	images: string[]
 	status: 'Aberta'
+	authorEmail: string
+	priority: string
+	responsible: string
 	statusHistory: StatusHistory[]
 	createdAt: string
 }
@@ -30,7 +34,7 @@ type StatusHistory = {
 	changedAt: string
 }
 
-export default function CreateIssue() {
+export default function CreateIssue({ currentUser }: { currentUser: CurrentUser }) {
 	const navigate = useNavigate()
 	const [title, setTitle] = useState('')
 	const [description, setDescription] = useState('')
@@ -54,6 +58,9 @@ export default function CreateIssue() {
 			address: address.trim(),
 			images: images.map(image => image.name),
 			status: 'Aberta',
+			authorEmail: currentUser.email,
+			priority: 'Média',
+			responsible: '',
 			statusHistory: [{ previousStatus: 'Inicial', newStatus: 'Aberta', changedAt: new Date().toISOString() }],
 			createdAt: new Date().toISOString(),
 		}
